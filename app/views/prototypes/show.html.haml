@@ -5,6 +5,10 @@
         .media-left
           = link_to user_path(@prototype.user) do
             = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+        .media-right
+          -if user_signed_in? && current_user.id == @prototype.user_id
+            = link_to "編集", edit_prototype_path(@prototype)
+            = link_to "削除", "/prototypes/#{@prototype.id}", method: :delete
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
