@@ -23,7 +23,7 @@ class Prototype < ActiveRecord::Base
   end
 
   def like_user(user_id)
-   likes.find_by(user_id: user_id) #find_byですでにユーザーが既にLIKEをしているか確認
+   likes.find_by(user_id: user_id)
   end
 
 end
