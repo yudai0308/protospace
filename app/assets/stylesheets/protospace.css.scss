@@ -419,6 +419,12 @@ body {
     position: relative;
     margin-bottom: 20px;
 
+    .selected-img {
+      pointer-events: none;
+      width: 100%;
+      height: auto;
+    }
+
     input {
       position: absolute;
       left: 0;
