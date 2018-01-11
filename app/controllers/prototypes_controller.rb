@@ -20,6 +20,8 @@ class PrototypesController < ApplicationController
   end
 
   def show
+      @prototypes = Prototype.all
+      @likes = Like.where(prototype_id: params[:prototype_id])
   end
 
   private

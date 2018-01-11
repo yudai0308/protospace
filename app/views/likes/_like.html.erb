@@ -1,0 +1,15 @@
+<% if prototype.like_user(current_user.id) %>
+  <%= button_to prototype_likes_path(likes,prototype_id: prototype.id), method: :delete, id: "like-button", remoto: true do %>
+    <%= image_tag("icon_red_heart.png") %>
+    <span>
+      <%= prototype.likes_count %>
+    </span>
+    <% end %>
+  <% else %>
+    <%= button_to prototype_likes_path(prototype), id: "like-button", remote: true do %>
+      <%= image_tag("icon_heart.png") %>
+      <span>
+        <%= prototype.likes_count %>
+      </span>
+    <% end %>
+<% end %>
