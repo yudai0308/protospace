@@ -614,25 +614,29 @@ body {
 
 
 /* -- flash messages ------------------------------------ */
-.alert {
+
+.alert--success {
   margin: 0;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
-
-
-
-.alert--success {
+  text-align: center;
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
 }
 
 .alert--danger {
+  margin: 0;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
 }
 
-}
+
