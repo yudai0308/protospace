@@ -389,6 +389,17 @@ body {
 
 .proto-new {
   padding-top: 20px;
+  // text-align: center;
+  // vertical-align: middle;
+
+  .img-preview {
+  pointer-events: none;
+  height: 500px;
+  width: 690px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  }
 
   input[type="text"],
   textarea {
@@ -418,6 +429,12 @@ body {
     height: 500px;
     position: relative;
     margin-bottom: 20px;
+
+    // .selected-img-0 {
+    //   pointer-events: none;
+    //   width: 100%;
+    //   height: auto;
+    // }
 
     input {
       position: absolute;
