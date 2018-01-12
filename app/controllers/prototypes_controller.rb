@@ -28,10 +28,18 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype.captured_images.build
-  end
+    image = @prototype.captured_images
+    @main = image[0]
+  end  
 
   def update
+    if @prototype.update(prototype_params)
+      redirect_to :root, notice: 'New prototype was successfully edited'
+    else
+      redirect_to ({ action: :edit }), alert: 'New prototype was unsuccessfully edited'
+     end
+
+
   end  
 
   private
