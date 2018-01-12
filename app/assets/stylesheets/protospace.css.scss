@@ -390,6 +390,12 @@ body {
 .proto-new {
   padding-top: 20px;
 
+  .img-preview {
+  pointer-events: none;
+  width: 100%;
+  height: auto;
+  }
+
   input[type="text"],
   textarea {
     border: 0;
@@ -419,11 +425,11 @@ body {
     position: relative;
     margin-bottom: 20px;
 
-    .selected-img {
-      pointer-events: none;
-      width: 100%;
-      height: auto;
-    }
+    // .selected-img-0 {
+    //   pointer-events: none;
+    //   width: 100%;
+    //   height: auto;
+    // }
 
     input {
       position: absolute;
