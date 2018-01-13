@@ -389,16 +389,12 @@ body {
 
 .proto-new {
   padding-top: 20px;
-  // text-align: center;
-  // vertical-align: middle;
 
   .img-preview {
   pointer-events: none;
   height: 500px;
-  width: 690px;
+  width: 100%;
   object-fit: contain;
-  display: block;
-  margin: 0 auto;
   }
 
   input[type="text"],
