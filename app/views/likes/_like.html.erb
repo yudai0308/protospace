@@ -1,22 +1,22 @@
 <% if user_signed_in? %>
   <% if prototype.like_user(current_user.id) %>
-    <%= button_to prototype_like_path(likes, prototype_id: prototype.id), method: :delete, id: "like-button", remoto: true do %>
-      <%= image_tag("icon_red_heart.png") %>
+    <%#= button_to prototype_like_path(like, prototype_id: prototype.id), method: :delete, id: "like-button", remoto: true do %>
+      <%= image_tag("icon_heart_red.svg") %>
       <span>
         <%= prototype.likes_count %>
       </span>
-      <% end %>
-    <% else %>
-      <%= button_to prototype_likes_path(prototype), id: "like-button", remote: true do %>
-        <%= image_tag("icon_heart.png") %>
-        <span>
-          <%= prototype.likes_count %>
-        </span>
-      <% end %>
+    <%# end %>
+  <% else %>
+    <%= button_to prototype_likes_path(prototype.id), id: "like-button", remote: true do %>
+      <%= image_tag("icon_heart.svg") %>
+      <span>
+        <%= prototype.likes_count %>
+      </span>
+    <% end %>
   <% end %>
 <% else %>
-  <%= image_tag("icon_heart.png") %>
-    <span>
-      <%= prototype.like_count %>
-    </span>
+  <%= image_tag("icon_heart.svg") %>
+  <span>
+    <%= prototype.likes_count %>
+  </span>
 <% end %>

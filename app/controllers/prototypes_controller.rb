@@ -20,7 +20,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
-      @prototypes = Prototype.all
+      @prototype = Prototype.find(params[:id])
       @likes = Like.where(prototype_id: params[:id])
   end
 
