@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :edit, :destroy, :update]
 
   def index
     @prototypes = Prototype.all
@@ -15,14 +15,34 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
+      redirect_to ({ action: :new }), alert: 'New prototype was unsuccessfully created'
      end
   end
+
+  def destroy
+    @prototype.destroy if current_user.id == @prototype.user_id
+    redirect_to :root, notice: 'Already prototype was successfully deleted'
+  end  
 
   def show
       @prototype = Prototype.find(params[:id])
       @likes = Like.where(prototype_id: params[:id])
   end
+
+  def edit
+    image = @prototype.captured_images
+    @main = image[0]
+  end  
+
+  def update
+    if @prototype.update(prototype_params)
+      redirect_to :root, notice: 'New prototype was successfully edited'
+    else
+      redirect_to ({ action: :edit }), alert: 'New prototype was unsuccessfully edited'
+     end
+
+
+  end  
 
   private
 
