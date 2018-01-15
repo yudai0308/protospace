@@ -426,12 +426,6 @@ body {
     position: relative;
     margin-bottom: 20px;
 
-    // .selected-img-0 {
-    //   pointer-events: none;
-    //   width: 100%;
-    //   height: auto;
-    // }
-
     input {
       position: absolute;
       left: 0;
@@ -453,6 +447,13 @@ body {
       background: image-url("noimage.png") #fff no-repeat center center;
       height: 200px;
       position: relative;
+
+      .img-preview {
+      pointer-events: none;
+      height: 200px;
+      width: 100%;
+      object-fit: contain;
+      }
 
       input {
         position: absolute;
