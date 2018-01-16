@@ -25,13 +25,11 @@ class PrototypesController < ApplicationController
   end
 
   def show
-      @prototype = Prototype.find(params[:id])
       @likes = Like.where(prototype_id: params[:id])
   end
 
   def edit
     @image = @prototype.captured_images
-
   end
 
   def update

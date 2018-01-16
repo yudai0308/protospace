@@ -8,8 +8,8 @@
         .media-right
         -if user_signed_in? && current_user.id == @prototype.user_id
           = link_to 'delete', "/prototypes/#{@prototype.id}", method: :delete
-          = link_to 'edit', "/prototypes/#{@prototype.id}/edit", method: :get 
-        -else   
+          = link_to 'edit', "/prototypes/#{@prototype.id}/edit", method: :get
+        -else
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
