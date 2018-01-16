@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :destroy, :update]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def new
@@ -29,8 +29,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    image = @prototype.captured_images
-    @main = image[0]
+    @image = @prototype.captured_images
   end
 
   def update
@@ -55,8 +54,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      # :likes_count,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:id, :content, :status]
     )
   end
 end
