@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :destroy, :update]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def new
@@ -22,7 +22,7 @@ class PrototypesController < ApplicationController
   def destroy
     @prototype.destroy if current_user.id == @prototype.user_id
     redirect_to :root, notice: 'Already prototype was successfully deleted'
-  end  
+  end
 
   def show
       @prototype = Prototype.find(params[:id])
@@ -30,9 +30,9 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    image = @prototype.captured_images
-    @main = image[0]
-  end  
+    @image = @prototype.captured_images
+
+  end
 
   def update
     if @prototype.update(prototype_params)
@@ -42,7 +42,7 @@ class PrototypesController < ApplicationController
      end
 
 
-  end  
+  end
 
   private
 
@@ -56,7 +56,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:id, :content, :status]
     )
   end
 end
