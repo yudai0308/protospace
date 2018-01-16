@@ -12,6 +12,6 @@ class LikesController < ApplicationController
     # @prototypes = Prototype.all
     # @prototype = Prototype.find(params[:prototype_id])
     # @likes = Like.where(prototype_id: params[:prototype_id])
-    redirect_to controller: 'prototypes', action: 'index'
+    redirect_to controller: 'prototypes', action: 'show', id: params[:prototype_id]
   end
 end
