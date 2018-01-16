@@ -16,19 +16,19 @@ $(function() {
   });
 });
 
-$(function() {
-  $("#prototype_captured_images_attributes_1_content").change(function() {
-    var selectedFile = this.files[0];
-    console.log(selectedFile);
-    var fileReader = new FileReader();
-    console.log(fileReader);
-    fileReader.onload = function(event) {
-      var imageUri = event.target.result;
-      $(".selected-img-1").replaceWith( '<img class="selected-img-1 img-preview-sub" src="' + imageUri + '">' );
-    };
-    fileReader.readAsDataURL(selectedFile);
-  });
-});
+// $(function() {
+//   $("#prototype_captured_images_attributes_1_content").change(function() {
+//     var selectedFile = this.files[0];
+//     console.log(selectedFile);
+//     var fileReader = new FileReader();
+//     console.log(fileReader);
+//     fileReader.onload = function(event) {
+//       var imageUri = event.target.result;
+//       $(".selected-img-1").replaceWith( '<img class="selected-img-1 img-preview-sub" src="' + imageUri + '">' );
+//     };
+//     fileReader.readAsDataURL(selectedFile);
+//   });
+// });
 
 // $(function() {
 //   $("#prototype_captured_images_attributes_2_content").change(function() {
