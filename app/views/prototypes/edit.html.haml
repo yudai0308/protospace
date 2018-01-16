@@ -11,7 +11,7 @@
         .col-md-12
           %h4 Main Thumbnail
           .cover-image-upload#main_image_uploader
-            = image_tag(@image.first.content.large)
+            = image_tag(@image.first.content.large, class: "img-preview")
             = f.fields_for :captured_images, @image.first do |image|
               = image.file_field :content
               = image.hidden_field :status, value: "main"
