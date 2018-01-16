@@ -22,17 +22,16 @@ class PrototypesController < ApplicationController
   def destroy
     @prototype.destroy if current_user.id == @prototype.user_id
     redirect_to :root, notice: 'Already prototype was successfully deleted'
-  end  
+  end
 
   def show
-      @prototype = Prototype.find(params[:id])
       @likes = Like.where(prototype_id: params[:id])
   end
 
   def edit
     image = @prototype.captured_images
     @main = image[0]
-  end  
+  end
 
   def update
     if @prototype.update(prototype_params)
@@ -42,7 +41,7 @@ class PrototypesController < ApplicationController
      end
 
 
-  end  
+  end
 
   private
 
@@ -56,6 +55,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
+      # :likes_count,
       captured_images_attributes: [:content, :status]
     )
   end
