@@ -1,4 +1,3 @@
-// 参考サイト
 // http://hennayagyu.com/webhack/javascript/file-api%E3%81%AE%E7%94%BB%E5%83%8F%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E3%81%A1%E3%82%83%E3%82%93%E3%81%A8%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B-2579
 
 $(function() {
