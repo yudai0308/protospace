@@ -11,8 +11,9 @@
         .col-md-12
           %h4 Main Thumbnail
           .cover-image-upload#main_image_uploader
-            = image_tag(@image.first.content.large, class: "img-preview")
-            = f.fields_for :captured_images, @image.first do |image|
+            -if @image.main.first
+              = image_tag(@image.main.first.content.large, class: "selected-img-0")
+            = f.fields_for :captured_images, @image.main.first do |image|
               = image.file_field :content
               = image.hidden_field :status, value: "main"
         .col-md-12
@@ -20,20 +21,29 @@
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
               .image-upload
+                -if @image.sub.first
+                  = image_tag(@image.sub.first.content, class: "selected-img-1 img-responsive")
+                -else
+                  %img{class: "selected-img-1"}
                 = f.fields_for :captured_images, @image.second do |image|
-                  %img
                   = image.file_field :content
                   = image.hidden_field :status, value: "sub"
             %li.list-group-item.col-md-4
               .image-upload
+                -if @image.sub.second
+                  = image_tag(@image.sub.second.content, class: "selected-img-2 img-responsive")
+                -else
+                  %img{class: "selected-img-2"}
                 = f.fields_for :captured_images, @image.third do |image|
-                  %img
                   = image.file_field :content
                   = image.hidden_field :status, value: "sub"
             %li.list-group-item.col-md-4
               .image-upload
+                -if @image.sub.third
+                  = image_tag(@image.sub.third.content, class: "selected-img-3 img-responsive")
+                -else
+                  %img{class: "selected-img-3"}
                 = f.fields_for :captured_images, @image.last do |image|
-                  %img
                   = image.file_field :content
                   = image.hidden_field :status, value: "sub"
       .row.proto-description
