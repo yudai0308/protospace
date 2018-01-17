@@ -1,18 +1,16 @@
 - if user_signed_in?
-  - if @likes.find_by(current_user.id)
-    = button_to prototype_like_path(likes.ids, prototype_id: prototype.id), method: :delete, id: "like-button", remoto: true do
+  - if likes.find_by(user_id: current_user.id)
+    = button_to prototype_like_path(likes.ids, prototype_id: prototype.id), method: :delete, id: "like-button" do
       = image_tag("icon_red_heart.png")
       LIKE
-      %span
-        = prototype.likes_count
+      %span= likes.where(prototype_id: prototype.id).count
   - else
-    = button_to prototype_likes_path(prototype.id), id: "like-button", remote: true do
+    = button_to prototype_likes_path(prototype.id), id: "like-button" do
       = image_tag("icon_heart.png")
       LIKE
-      %span
-        = prototype.likes_count
+      %span= likes.where(prototype_id: prototype.id).count
 - else
-  = image_tag("icon_heart.png")
-  LIKE
-  %span
-    = prototype.likes_count
+  %button#like-button-without-login
+    = image_tag("icon_heart.png")
+    LIKE
+    %span= likes.where(prototype_id: prototype.id).count
