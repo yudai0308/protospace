@@ -16,6 +16,9 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick', '2.16.0'
 gem 'kaminari'
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
+gem 'data-confirm-modal'
 
 group :development, :test do
   gem 'byebug'
