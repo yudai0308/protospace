@@ -7,8 +7,9 @@
             = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
         .media-right
         -if user_signed_in? && current_user.id == @prototype.user_id
-          = link_to 'delete', "/prototypes/#{@prototype.id}", method: :delete
-          = link_to 'edit', "/prototypes/#{@prototype.id}/edit", method: :get
+          = link_to 'DELETE', "/prototypes/#{@prototype.id}", method: :delete, class: "fa fa-remove", data: {confirm: "削除してよろしいでしょうか？"}
+          %span.space aa
+          = link_to 'EDIT', "/prototypes/#{@prototype.id}/edit", method: :get, class: "fa fa-edit"
         -else
         .media-body
           %h4#top-aligned-media.media-heading
