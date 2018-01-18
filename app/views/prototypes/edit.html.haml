@@ -12,7 +12,7 @@
           %h4 Main Thumbnail
           .cover-image-upload#main_image_uploader
             -if @image.main.first
-              = image_tag(@image.main.first.content.large, class: "selected-img-0")
+              = image_tag(@image.main.first.content.large, class: "selected-img-0 img-preview")
             = f.fields_for :captured_images, @image.main.first do |image|
               = image.file_field :content
               = image.hidden_field :status, value: "main"
@@ -22,7 +22,7 @@
             %li.list-group-item.col-md-4
               .image-upload
                 -if @image.sub.first
-                  = image_tag(@image.sub.first.content, class: "selected-img-1 img-responsive")
+                  = image_tag(@image.sub.first.content, class: "selected-img-1 img-responsive img-preview-sub")
                 -else
                   %img{class: "selected-img-1"}
                 = f.fields_for :captured_images, @image.second do |image|
@@ -31,7 +31,7 @@
             %li.list-group-item.col-md-4
               .image-upload
                 -if @image.sub.second
-                  = image_tag(@image.sub.second.content, class: "selected-img-2 img-responsive")
+                  = image_tag(@image.sub.second.content, class: "selected-img-2 img-responsive img-preview-sub")
                 -else
                   %img{class: "selected-img-2"}
                 = f.fields_for :captured_images, @image.third do |image|
@@ -40,7 +40,7 @@
             %li.list-group-item.col-md-4
               .image-upload
                 -if @image.sub.third
-                  = image_tag(@image.sub.third.content, class: "selected-img-3 img-responsive")
+                  = image_tag(@image.sub.third.content, class: "selected-img-3 img-responsiveimg-preview-sub ")
                 -else
                   %img{class: "selected-img-3"}
                 = f.fields_for :captured_images, @image.last do |image|
