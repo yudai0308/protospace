@@ -3,9 +3,11 @@ class Prototype < ActiveRecord::Base
   has_many :captured_images, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments
+  has_many :tags, dependent: :destroy
 
   accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images
 
+  accepts_nested_attributes_for :tags, reject_if: :reject_tags
   validates :title,
             :catch_copy,
             :concept,
@@ -13,6 +15,10 @@ class Prototype < ActiveRecord::Base
 
   def reject_sub_images(attributed)
     attributed['content'].blank?
+  end
+
+  def reject_tags(attributed)
+    attributed['name'].blank?
   end
 
   def set_main_thumbnail
