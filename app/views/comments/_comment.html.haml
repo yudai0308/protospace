@@ -2,7 +2,7 @@
   = f.text_field :content, class: "input-comment", placeholder: "type a comment"
   = f.submit "SEND", class: "send-button"
 
-= comments.each do |comment|
+- comments.each do |comment|
   %ul.comment-index
     %li.comment-index__content= comment.content
     %li.comment-index__name= comment.user.name
