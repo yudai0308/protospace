@@ -11,6 +11,8 @@ $(function() {
     var formData = new FormData($(this).get(0));
     var href = window.location.href + "/comments"
 
+    $(".send-button").removeAttr("data-disable-with");
+
     $.ajax({
       url: href,
       type: "POST",
