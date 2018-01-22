@@ -1,8 +1,11 @@
 = form_for [prototype, comment] do |f|
-  = f.text_field :content, class: "input-comment", placeholder: "type a comment"
-  = f.submit "SEND", class: "send-button"
+  %ul.comment-form
+    %li= f.text_area :content, class: "input-comment", placeholder: "type a comment"
+    %li= f.submit "SEND", class: "send-button"
 
-- comments.each do |comment|
-  %ul.comment-index
-    %li.comment-index__content= comment.content
-    %li.comment-index__name= comment.user.name
+%div.comment-index
+  - comments.each do |comment|
+    %ul.comment-list
+      %li.comment-list__content= comment.content
+      %li.comment-list__name= comment.user.name
+      %li.comment-list__date= comment.created_at

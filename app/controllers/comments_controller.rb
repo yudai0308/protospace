@@ -4,7 +4,10 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to prototype_path(@prototype)
+      respond_to do |format|
+        format.html { redirect_to prototype_path(@prototype) }
+        format.json
+      end
     else
       # flash.now[:alert] = "メッセージを入力してください。"
       redirect_to prototype_path(@prototype)
