@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 20180118010116) do
 
   add_index "prototypes", ["user_id"], name: "index_prototypes_on_user_id", using: :btree
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.integer  "prototype_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
+  add_index "tags", ["prototype_id"], name: "fk_rails_e554a0b6e3", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
     t.string   "encrypted_password",     limit: 255,   default: "", null: false
@@ -78,4 +88,5 @@ ActiveRecord::Schema.define(version: 20180118010116) do
   add_foreign_key "comments", "prototypes"
   add_foreign_key "comments", "users"
   add_foreign_key "prototypes", "users"
+  add_foreign_key "tags", "prototypes"
 end
