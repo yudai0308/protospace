@@ -1,12 +1,12 @@
 - if user_signed_in?
   - if likes.find_by(user_id: current_user.id)
     = button_to prototype_like_path(likes.ids, prototype_id: prototype.id), method: :delete, id: "like-button" do
-      = image_tag("icon_red_heart.png")
+      = image_tag("icon_red_heart.png", class: "like-img")
       LIKE
       %span= likes.where(prototype_id: prototype.id).count
   - else
     = button_to prototype_likes_path(prototype.id), id: "like-button" do
-      = image_tag("icon_heart.png")
+      = image_tag("icon_heart.png", class: "unlike-img")
       LIKE
       %span= likes.where(prototype_id: prototype.id).count
 - else
