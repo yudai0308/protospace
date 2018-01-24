@@ -1,0 +1,4 @@
+%h2 #{@tag.name}をタグに含むprototype一覧
+.container.proto-list
+  .row
+    = render partial: 'prototypes/prototype', collection: @prototypes

@@ -29,6 +29,7 @@ class PrototypesController < ApplicationController
     @likes = Like.where(prototype_id: params[:id])
     @comment = Comment.new
     @comments = @prototype.comments.includes(:user)
+    @tags = @prototype.tags
   end
 
   def edit

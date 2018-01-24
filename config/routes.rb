@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :create, :update]
   end
   resources :users, only: [:show, :edit, :update]
+  resources :tags, only: [:index, :show]
 end
