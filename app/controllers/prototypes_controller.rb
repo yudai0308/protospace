@@ -13,16 +13,18 @@ class PrototypesController < ApplicationController
 
   def newest
     @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(10)
-    render action:'index'
+    respond_to do |format|
+      format.html { render action:'index' }
+      format.json
+    end
   end
 
   def popular
     @prototypes = Prototype.order("likes_count DESC").page(params[:page]).per(10)
-    # respond_to do |format|
-    #   format.html { render action:'index' }
-    #   format.json
-    # end
-    render action:'index'
+    respond_to do |format|
+      format.html { render action:'index' }
+      format.json
+    end
   end
 
   def create
