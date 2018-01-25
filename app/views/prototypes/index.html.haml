@@ -13,7 +13,7 @@
       = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
 
 .container.proto-list
-  .row
+  #proto-list.row
     = render partial: 'prototypes/prototype', collection: @prototypes
 
 .text-center
