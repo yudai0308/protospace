@@ -10,4 +10,5 @@
       %p.comment-list__name= comment.user.name
       %p.comment-list__date= comment.created_at
       %a.comment-list__modify 編集
-      %a.comment-list__delete 削除
+      %a.comment-list__delete{href: "/prototypes/#{prototype.id}/comments/#{comment.id}", method: "DELETE", remote: :true} 削除
+      -# =link_to "削除", "/prototypes/#{prototype.id}/comments/#{comment.id}", method: :delete, remote: true

@@ -99,6 +99,7 @@ $(function() {
     .done(function(data) {
       $(`[data-comment-id="${commentId}"]`).children(".comment-list__content").text(data.content)
       changeButton();
+      $(".comment-list__delete").show();
     })
     .fail(function() {
       alert("エラーだっちゃ");
@@ -120,41 +121,19 @@ $(function() {
     e.preventDefault();
     var commentId = $(this).parent().attr("data-comment-id");
     var deleteCommentURL = window.location.href + "/comments/" + commentId
+    console.log(commentId);
+    console.log(deleteCommentURL);
 
     $.ajax({
       url: deleteCommentURL,
       type: "DELETE",
-      // data: formData,
-      // dataType: "json",
-      processData: false,
-      // contentType: false
+      dataType: "json"
     })
     .done(function() {
       $(`[data-comment-id="${commentId}"]`).remove();
     })
     .fail(function() {
-      alert("エラーですわよっ");
+      alert("あんたバカぁ?");
     });
   });
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+});
