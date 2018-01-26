@@ -14,6 +14,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    comment = Comment.find(params[:id])
+    comment.update(comment_params) if comment.user.id == current_user.id
+    respond_to do |format|
+      format.html { redirect_to prototype_path(@prototype) }
+      format.json
+    end
+  end
+
   def destroy
   end
 
