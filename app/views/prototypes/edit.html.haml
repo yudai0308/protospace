@@ -40,7 +40,7 @@
             %li.list-group-item.col-md-4
               .image-upload
                 -if @image.sub.third
-                  = image_tag(@image.sub.third.content, class: "selected-img-3 img-responsiveimg-preview-sub ")
+                  = image_tag(@image.sub.third.content, class: "selected-img-3 img-responsive img-preview-sub ")
                 -else
                   %img{class: "selected-img-3"}
                 = f.fields_for :captured_images, @image.sub.third do |image|

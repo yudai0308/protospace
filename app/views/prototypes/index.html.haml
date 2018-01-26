@@ -7,13 +7,13 @@
     .row
       %ul.nav.nav-pills.col-lg-11
         %li.btn-default.btn-popular
-          = link_to "Popular", "#"
+          = link_to "Popular", popular_path, id: "popular_index"
         %li.btn-default.btn-popular
-          = link_to "Newest", "#"
-      = link_to "VIEW TAGS", "#", class: "btn btn-default col-lg-1"
+          = link_to "Newest", newest_path, id: "newest_index"
+      = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
 
 .container.proto-list
-  .row
+  #proto-list.row
     = render partial: 'prototypes/prototype', collection: @prototypes
 
 .text-center

@@ -2,13 +2,29 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :destroy, :update]
 
   def index
-    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(10)
+    @prototypes = Prototype.all.page(params[:page]).per(10)
   end
 
   def new
     @prototype = Prototype.new
     @prototype.captured_images.build
     @prototype.tags.build
+  end
+
+  def newest
+    @prototypes = Prototype.order("created_at DESC").page(params[:page]).per(10)
+    respond_to do |format|
+      format.html { render action:'index' }
+      format.json
+    end
+  end
+
+  def popular
+    @prototypes = Prototype.order("likes_count DESC").page(params[:page]).per(10)
+    respond_to do |format|
+      format.html { render action:'index' }
+      format.json
+    end
   end
 
   def create
@@ -29,6 +45,7 @@ class PrototypesController < ApplicationController
     @likes = Like.where(prototype_id: params[:id])
     @comment = Comment.new
     @comments = @prototype.comments.includes(:user).order("created_at DESC")
+    @tags = @prototype.tags
   end
 
   def edit
