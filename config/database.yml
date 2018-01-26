@@ -17,6 +17,13 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
+  production:
+  <<: *default
+  database: protospace-in-dev_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
+
 development:
   <<: *default
   database: protospace-in-dev_development
