@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :prototypes do
     resources :likes, only: [:create, :destroy]
-    resources :comments, only: [:index, :create, :update]
+    resources :comments, only: [:index, :create, :update, :destroy]
   end
   resources :users, only: [:show, :edit, :update]
   resources :tags, only: [:index, :show]

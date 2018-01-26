@@ -1,8 +1,14 @@
 = form_for [prototype, comment] do |f|
-  = f.text_field :content, class: "input-comment", placeholder: "type a comment"
-  = f.submit "SEND", class: "send-button"
+  .comment-form
+    = f.text_area :content, class: "input-comment", placeholder: "type a comment"
+    = f.submit "送信", class: "send-button"
 
-= comments.each do |comment|
-  %ul.comment-index
-    %li.comment-index__content= comment.content
-    %li.comment-index__name= comment.user.name
+%div.comment-index
+  - comments.each do |comment|
+    .comment-list{"data-comment-id": "#{comment.id}"}
+      %p.comment-list__content= comment.content
+      %p.comment-list__name= comment.user.name
+      %p.comment-list__date= comment.created_at
+      %a.comment-list__modify 編集
+      %a.comment-list__delete{href: "/prototypes/#{prototype.id}/comments/#{comment.id}", method: "DELETE", remote: :true} 削除
+      -# =link_to "削除", "/prototypes/#{prototype.id}/comments/#{comment.id}", method: :delete, remote: true

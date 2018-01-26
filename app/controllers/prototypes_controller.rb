@@ -44,7 +44,7 @@ class PrototypesController < ApplicationController
   def show
     @likes = Like.where(prototype_id: params[:id])
     @comment = Comment.new
-    @comments = @prototype.comments.includes(:user)
+    @comments = @prototype.comments.includes(:user).order("created_at DESC")
     @tags = @prototype.tags
   end
 

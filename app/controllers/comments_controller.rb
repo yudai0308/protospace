@@ -4,14 +4,30 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to prototype_path(@prototype)
+      respond_to do |format|
+        format.html { redirect_to prototype_path(@prototype) }
+        format.json
+      end
     else
-      # flash.now[:alert] = "メッセージを入力してください。"
       redirect_to prototype_path(@prototype)
     end
   end
 
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params) if @comment.user.id == current_user.id
+    respond_to do |format|
+      format.html { redirect_to prototype_path(@prototype) }
+      format.json
+    end
+  end
+
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy if @comment.user.id == current_user.id
+    respond_to do |format|
+      format.json {render json: @comment}
+    end
   end
 
   private
