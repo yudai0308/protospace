@@ -2,9 +2,9 @@
 $(function() {
   function buildHTML(comment) {
     var html = `<div class="comment-list" data-comment-id="${comment.id}">
-                  <div class="comment-list__content">${comment.content}</div>
-                  <div class="comment-list__name">${comment.name}</div>
-                  <div class="comment-list__date">${comment.date}</div>
+                  <p class="comment-list__content">${comment.content}</p>
+                  <p class="comment-list__name">${comment.name}</p>
+                  <p class="comment-list__date">${comment.date}</p>
                   <a class="comment-list__modify"> 編集 </a>
                   <a class="comment-list__delete"> 削除 </a>
                 </div>`
@@ -78,6 +78,7 @@ $(function() {
     $("#new_comment").attr("action", editCommentURL);
     $("#new_comment").attr("method", "patch");
     $("#new_comment").attr("id", "edit_comment");
+    $(".comment-list__delete").hide();
   });
 
     // 更新を押したときの処理
@@ -102,24 +103,40 @@ $(function() {
     .fail(function() {
       alert("エラーだっちゃ");
     });
+  });
 
-    // 「キャンセル」を押したときの処理
-    $(document).on("click", ".cansell-button", function(e) {
-      e.preventDefault();
-      changeButton();
-    });
+  // 「キャンセル」を押したときの処理
+  $(document).on("click", ".cansell-button", function(e) {
+    e.preventDefault();
+    changeButton();
+    $(".comment-list__delete").show();
   });
 });
 
 // -----コメント削除機能-----
 
-// $(function() {
-//   $(document).on("click", ".comment-list__delete", function(e) {
-//     e.preventDefault();
-//     var commentId = $(this).parent().attr("data-comment-id");
-//     var deleteCommentURL = window.location.href + "/comments/" + commentId
-//   })
-// })
+$(function() {
+  $(document).on("click", ".comment-list__delete", function(e) {
+    e.preventDefault();
+    var commentId = $(this).parent().attr("data-comment-id");
+    var deleteCommentURL = window.location.href + "/comments/" + commentId
+
+    $.ajax({
+      url: deleteCommentURL,
+      type: "DELETE",
+      // data: formData,
+      // dataType: "json",
+      processData: false,
+      // contentType: false
+    })
+    .done(function() {
+      $(`[data-comment-id="${commentId}"]`).remove();
+    })
+    .fail(function() {
+      alert("エラーですわよっ");
+    });
+  });
+})
 
 
 

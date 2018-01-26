@@ -25,7 +25,8 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    comment.destroy if @comment.user.id == current_user.id
+    # binding.pry
+    comment.destroy if comment.user.id == current_user.id
   end
 
   private
