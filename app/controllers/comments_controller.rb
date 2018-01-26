@@ -15,8 +15,9 @@ class CommentsController < ApplicationController
   end
 
   def update
-    comment = Comment.find(params[:id])
-    comment.update(comment_params) if comment.user.id == current_user.id
+    @comment = Comment.new(comment_params)
+    # binding.pry
+    @comment.update(comment_params) if @comment.user.id == current_user.id
     respond_to do |format|
       format.html { redirect_to prototype_path(@prototype) }
       format.json
@@ -24,6 +25,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy if @comment.user.id == current_user.id
   end
 
   private
