@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
         format.json
       end
     else
-      # flash.now[:alert] = "メッセージを入力してください。"
       redirect_to prototype_path(@prototype)
     end
   end
@@ -25,7 +24,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    # binding.pry
     @comment.destroy if @comment.user.id == current_user.id
     respond_to do |format|
       format.json {render json: @comment}
