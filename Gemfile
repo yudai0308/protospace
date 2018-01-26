@@ -23,6 +23,11 @@ gem 'data-confirm-modal'
 group :development, :test do
   gem 'byebug'
   gem 'mysql2', '~> 0.3.18'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
