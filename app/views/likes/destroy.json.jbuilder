@@ -1,2 +1,2 @@
-json.likes_count  @prototype.likes_count
+json.likes_count  @like_count
 json.path         @path
