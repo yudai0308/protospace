@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.new(comment_params)
-    # binding.pry
     @comment.update(comment_params) if @comment.user.id == current_user.id
     respond_to do |format|
       format.html { redirect_to prototype_path(@prototype) }
