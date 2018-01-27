@@ -1,12 +1,13 @@
 // -----コメント新規投稿機能-----
 $(function() {
   function buildHTML(comment) {
+
     var html = `<div class="comment-list" data-comment-id="${comment.id}">
                   <p class="comment-list__content">${comment.content}</p>
                   <p class="comment-list__name">${comment.name}</p>
                   <p class="comment-list__date">${comment.date}</p>
                   <a class="comment-list__modify"> 編集 </a>
-                  <a class="comment-list__delete"> 削除 </a>
+                  <a class="comment-list__delete" data-confirm="削除してよろしいでしょうか？"> 削除 </a>
                 </div>`
     return html;
   };
@@ -34,7 +35,7 @@ $(function() {
     })
 
     .fail(function() {
-      alert("コメントを入力してください");
+      alert("バルス！");
     });
     $(".comment-index").animate({scrollTop: 0}, 1000, "swing");
   });
