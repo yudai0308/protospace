@@ -14,6 +14,11 @@
         font-size: 15px;
       }
 
+      .input-comment:focus {
+        box-shadow: 0 0 7px #3498db;
+        border: 1px solid #3498db;
+      }
+
       .send-button {
         height: 30px;
         border-radius: 3px;
